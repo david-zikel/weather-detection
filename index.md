@@ -12,7 +12,7 @@ and set intensity based on checks offset by a value perpendicular to this direct
 ### Skyline detection:
 Find y-value s.t. the squared difference between two 'means' shifting at that value is minimized.
 Formula can be included here verbatim.
-$$ \int_{0}^{1} \int_{0}^{1} (f(x,y) - \mu(y))\,dx $$
+$$ \int_{0}^{1} \int_{0}^{1} (f(x,y) - \mu(y))^2\,dx $$
 
 ## Lighting data
 Retinex - see cited paper.
