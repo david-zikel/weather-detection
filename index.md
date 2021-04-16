@@ -1,12 +1,25 @@
-## Welcome to GitHub Pages
+## Weather Detection
+### David Zikel
 
-You can use the [editor on GitHub](https://github.com/david-zikel/weather-detection/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+### Introduction
+Weather detection program. Uses various image processing techniques, most notably retinex lighting information (https://www.cs.technion.ac.il/~ron/PAPERS/retinex_ijcv2003.pdf). More information to be included.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Edge detection:
+Use Canny algorithm,
+estimate direction from edge pixels ~5px away,
+and set intensity based on checks offset by a value perpendicular to this direction.
+
+### Skyline detection:
+Find y-value s.t. the squared difference between two 'means' shifting at that value is minimized.
+Formula can be included here verbatim.
+
+## Lighting data
+Retinex - see cited paper.
+### Algorithm principles
+### Algorithm details
+### Implementation specifics
 
 ### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
 ```markdown
 Syntax highlighted code block
@@ -27,11 +40,3 @@ Syntax highlighted code block
 ```
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/david-zikel/weather-detection/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
