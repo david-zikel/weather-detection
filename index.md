@@ -12,11 +12,17 @@ estimate direction from edge pixels ~5px away,
 and set intensity based on checks offset by a value perpendicular to this direction.
 
 ### Skyline detection:
-Find y-value s.t. the squared difference between two 'means' shifting at that value is minimized.
+For determining the color balance of parts of an image, it is beneficial to find the location of the skyline or horizon line - the vertical position in the image marking the divide between the sky (or a very far-off part of the scene) and the objects being photographed. If the camera is aligned horizontally, this skyline will always be a horizontal line across the image. This means that, for the purposes of computation, only a y-coordinate must be found.
 
-Formula can be included here verbatim.
+The 'skyline' is modeled as the point along the image (vertically) such that the image is closest in the $$L^2$$ norm to a step function on the y coordinate with its step located along the skyline. Equivalently, modeling the image as a function $$f : [0,1] \times [0,1] \rightarrow [0,1]$$, the skyline position is the value $\hat{y}$ such that the minimum value of
 
-$$ \int_{0}^{1} \int_{0}^{1} (f(x,y) - \mu(y))^2\,dx\,dy $$
+$$\int_{0}^{1} \int_{0}^{1} (f(x,y) - \mu(y))^2\,dx\,dy$$
+
+across all functions
+
+$$\mu(y) = \cases{\mu_u \quad y < \hat{y} \\ \mu_d \quad y \geq \hat{y}}$$
+
+is the minimum across all step functions $$\mu$$.
 
 ## Lighting data
 Retinex - see cited paper.
