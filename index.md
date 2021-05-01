@@ -30,14 +30,24 @@ It is clear that the values of $$\mu_u$$ and $$\mu_d$$ minimizing this integral 
 
 ## Lighting data
 Retinex - see cited paper.
+
 ### Algorithm principles
-[lighting * albedo = measured]
-[smoothness plus two penalties]
+Lighting approximation algorithms attempt to extract two images from one input image. These images are a *lighting* image, which contains the ambient light information for a scene, and an *albedo* image, which contains the innate reflectance information for all objects in that scene. These output images are directly and algorithm-independently linked to the input image in two ways: the first is that the lighting image is always as bright as or brighter than the input image, and the second is that the per-pixel product of the lighting and albedo images is equal to the input image.
+
+The most prominent attribute of real lighting data, and the attribute lighting extraction algorithms most heavily rely on, is the smoothness of the lighting intensity across space. Two other properties of the lighting data are used to fine-tune the initial lighting estimate, using penalty parameters which are provided as input to the algorithm. The first property is that the lighting image should relatively closely resemble the input image, and the second property is that the albedo image (input divided by lighting) should, like the lighting image, be spatially smooth. A penalty formula is created based on these three attributes, and its solution is found using gradient descent.
+
 ### Algorithm details
-[log-scale]
+All computations in the Retinex algorithm are done on the logarithm of the input image, and the output is the logarithm of the lighting image, for two reasons. The first is mathematical convenience - rather than requiring divisions for each pixel to compute the albedo image for the third penalty term, the algorithm will only use subtractions. The second reason is that a logarithmic scale more closely approximates the way humans consider lighting. For instance, the most common means of brightening an image, gamma correction, raises the intensity value for each pixel to a fixed exponent rather than using additive or multiplicative scaling.
+
 [gradient computations for penalties]
 ### Implementation specifics
 [maybe merge into above]
+
+### Data aggregation
+[Move fog<.8 here?]
+
+### Proposal and midterm report
+[In gh-pages -- link to in sidebar?]
 
 ### Markdown
 
