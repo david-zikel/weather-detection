@@ -39,7 +39,18 @@ The most prominent attribute of real lighting data, and the attribute lighting e
 ### Algorithm details
 All computations in the Retinex algorithm are done on the logarithm of the input image, and the output is the logarithm of the lighting image, for two reasons. The first is mathematical convenience - rather than requiring divisions for each pixel to compute the albedo image for the third penalty term, the algorithm will only use subtractions. The second reason is that a logarithmic scale more closely approximates the way humans consider lighting. For instance, the most common means of brightening an image, gamma correction, raises the intensity value for each pixel to a fixed exponent rather than using additive or multiplicative scaling.
 
-[gradient computations for penalties]
+Denoting the (logarithm of the) original image by $$S$$ and the (logarithm of the) current lighting image by $$L$$, three penalty terms are computed, corresponding to the three criteria on $$L$$ specified above:
+
+$$||\nabla L||^2$$ for smoothness,
+
+$$\alpha (L-S)^2$$ for proximity, and
+
+$$\beta ||\nabla (L-S)||^2$$ for albedo smoothness.
+
+The total penalty integral over image space $$I$$, then, is $$\int \int_{I} (||\nabla L||^2 + \alpha (L-S)^2 + \beta ||\nabla (L-S)||^2) \,dx \,dy$$. If is is assumed that $$\nabla S = \nabla L = 0$$ on the boundary of $$I$$, this integral simplifies to $$\int \int_{I} (L \delta L + \alpha (L-S)^2 + \beta (L-S) \delta (L-S)) \,dx \,dy$$.
+
+For performance, the initial steps of the algorithm are run on smaller copies of the original image. Each copy is made from the copy of the next largest size by taking weighted averages of points at certain coordinates, approximating Gaussian weights as these averages are iterated. In the algorithm as implemented, 40 percent of gradient descent iterations are run on an image 1/64 the size of the original input (1/8 scale along both axes), 30 percent on an image 1/16 the size, 20 percent on an image 1/4 the size, and only 10% of iterations on the original input. As, due to the smoothness requirement, the most important attributes of the lighting image are its large-scale properties, this process greatly speeds up convergence.
+
 ### Implementation specifics
 [maybe merge into above]
 
