@@ -1,15 +1,18 @@
 % primary: https://www.cs.technion.ac.il/~ron/PAPERS/retinex_ijcv2003.pdf
 % chapter 3, https://onlinelibrary-wiley-com.ezproxy.library.wisc.edu/doi/pdfdirect/10.1002/9781119407416
-% possibly https://arxiv.org/pdf/1906.06690.pdf,
-% possibly find some csv weather data as reference
+% https://arxiv.org/pdf/1906.06690.pdf,
 
 function [lightingImg,albedoImg] = retinexExtract(img, alpha, beta)
 %RETINEXEXTRACT Estimate lighting and albedo data given one grayscale image.
 %   Follows algorithm from primary citation.
-%   Uses settings from that paper (p = 4, K_i = i).
-img = log(im2double(img));
+%   Uses settings from that paper (p = 4, K_i ~ i).
+img = log(im2double(img)+eps);
 p = 4;
-K = [10 20 30 40];
+if numel(img) < 10000000 % algorithm converges quickly - do not use unnecessary iterations if expensive
+    K = [10 20 30 40];
+else
+    K = [2 4 6 8];
+end
 pyramid = cell(p,1);
 pyramid{1} = img;
 for i=2:p
@@ -23,6 +26,7 @@ for i=2:p
 end
     L = zeros(size(pyramid{p})) + max(pyramid{p}(:));
     %L = pyramid{p};
+    %imshow(exp(L));
 for k=p:-1:1
     g_b = laplacian(pyramid{k})*2^(-2*(k-1));
     %g_b(1:10,1:10)
@@ -36,13 +40,13 @@ for k=p:-1:1
         mu = mu_a/(alpha*mu_a + (1+beta)*mu_b);
         L = L - mu*g;
         %figure; imshow(exp(L));
-        for y=1:size(L,1)
-            for x=1:size(L,2)
-                L(y,x) = max([L(y,x) pyramid{k}(y,x)]);
-                %L = max(cat(3,L,pyramid{k}),[],3); % actually slower
-                %L(y,x) = min([1 L(y,x)]);
-            end
-        end
+        L = max(cat(3,L,pyramid{k}),[],3);
+%         for y=1:size(L,1)
+%             for x=1:size(L,2)
+%                 L(y,x) = max([L(y,x) pyramid{k}(y,x)]);
+%                 %L(y,x) = min([1 L(y,x)]);
+%             end
+%         end
     end
     %figure; imshow(exp(L));
     %max(pyramid{k}(:))

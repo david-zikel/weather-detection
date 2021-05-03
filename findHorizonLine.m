@@ -1,4 +1,5 @@
-function horiz_y = findHorizonLine(img) % img is input as double
+function horiz_y = findHorizonLine(img)
+    img = im2double(img);
     row_sums = sum(img, 2);
     row_squares = sum(img.^2, 2);
     min_error = sum(row_squares) - sum(row_sums).^2/(size(img,1)*size(img,2));

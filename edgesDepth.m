@@ -2,9 +2,9 @@ function output_img = edgesDepth(orig_img)
 %EDGESDEPTH Returns edge-detected image where pixel intensity is
 %proportional to sharpness of edge
 %   Detailed description of algorithm TBD
-%orig_img = im2gray(orig_img);
+orig_img = im2double(orig_img);
 output_img = zeros(size(orig_img,1),size(orig_img,2));
-edge_img = edge(orig_img, 'canny', 0.1);
+edge_img = edge(im2gray(orig_img), 'canny', 0.1);
 for i = 1:size(edge_img,1)
     for j=1:size(edge_img,2)
         if edge_img(i,j)==0
