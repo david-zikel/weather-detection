@@ -1,8 +1,8 @@
 ## Weather Detection
 ### David Zikel
 
-### Introduction
-Weather detection program. Uses various image processing techniques, most notably retinex lighting information (https://www.cs.technion.ac.il/~ron/PAPERS/retinex_ijcv2003.pdf). More information to be included.
+### Problem and motivation
+Detection of ambient weather and climate conditions from a single image is useful in automatically categorizing images, such as on image uploading sites like Flickr. Many of these attributes can be detected through new techniques or novel applications of existing ones. This project, using various analysis methods including Retinex single-image lighting approximation, automatically categorizes images based on several ambient attributes: fog, time of day, and approximate temperature.
 
 ### Edge detection:
 ![Edge intensities](https://raw.githubusercontent.com/david-zikel/weather-detection/gh-pages/vision-edge.png)
