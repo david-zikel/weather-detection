@@ -61,6 +61,13 @@ For performance, the initial steps of the algorithm are run on smaller copies of
 ### Data aggregation
 ]Move fog<.8 here?]
 
+### Citations
+“A Variational Framework for Retinex”, Kimmel, Elad, Shaked, Keshet, and Sobel, 2003. [https://www.cs.technion.ac.il/~ron/PAPERS/retinex_ijcv2003.pdf](https://www.cs.technion.ac.il/~ron/PAPERS/retinex_ijcv2003.pdf) (primary source of algorithm implemented)
+
+“Computational Color Science”, chapter 3, Provenzi, 2017. [https://onlinelibrary-wiley-com.ezproxy.library.wisc.edu/doi/pdfdirect/10.1002/9781119407416](https://onlinelibrary-wiley-com.ezproxy.library.wisc.edu/doi/pdfdirect/10.1002/9781119407416)
+
+“STAR: A Structure and Texture Aware Retinex Model”, Xu, Hou, Ren, Liu, Zhu, Yu, Wang, Shao, 2020. [https://arxiv.org/pdf/1906.06690.pdf](https://arxiv.org/pdf/1906.06690.pdf)
+
 ### Proposal and midterm report
 Proposal: [Link](https://github.com/david-zikel/weather-detection/raw/gh-pages/766%20Project%20Proposal.pdf)
 
