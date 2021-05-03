@@ -8,7 +8,7 @@ Weather detection program. Uses various image processing techniques, most notabl
 ![Image](https://raw.githubusercontent.com/david-zikel/weather-detection/gh-pages/vision-edge.png)
 The amount of fog in an image can be estimated by measuring the intensity of edges in the image. In an image with no fog, the edges should be strong, and, conversely, in an image with prevalent fog, the edges should be weak. To measure the strength of an image's edges, a modified version of a standard edge detection algorithm can be used. 
 
-For this project, an image's edges are first detected (as a binary output, EDGE or NOT EDGE, per pixel) using the Canny edge detection algorithm. For each edge pixel detected by the Canny algorithm, the program analyzes a small (21x21) neighborhood of that edge to find the edge point in that region furthest from the original pixel. It is assumed, and this assumption has proven accurate in all analyzed images of actual scenes, that the line from the initial pixel to the found pixel is tangent to the line formed by all edge pixels. [Illustration?]
+For this project, an image's edges are first detected (as a binary output, EDGE or NOT EDGE, per pixel) using the Canny edge detection algorithm. For each edge pixel detected by the Canny algorithm, the program analyzes a small (21x21) neighborhood of that edge to find the edge point in that region furthest from the original pixel. It is assumed, and this assumption has proven accurate in all analyzed images of actual scenes, that the line from the initial pixel to the found pixel is tangent to the line formed by all edge pixels.
 
 Given this tangent line, color values are taken from two locations in the (original, color) image, both offset from the initial edge pixel in a direction perpendicular to the found tangent. This, in effect, finds the color of the image on each side of the edge being analyzed. The distance between these colors is computed (treating colors as coordinates in RGB-space), and the intensity of the edge pixel is returned as this distance.
 
@@ -33,7 +33,7 @@ It is clear that the values of $$\mu_u$$ and $$\mu_d$$ minimizing this integral 
 ## Lighting data
 ![Image](https://raw.githubusercontent.com/david-zikel/weather-detection/gh-pages/vision-retinex.png)
 
-[Retinex - see cited paper.]
+]Retinex - see cited paper.]
 
 ### Algorithm principles
 Lighting approximation algorithms attempt to extract two images from one input image. These images are a *lighting* image, which contains the ambient light information for a scene, and an *albedo* image, which contains the innate reflectance information for all objects in that scene. These output images are directly and algorithm-independently linked to the input image in two ways: the first is that the lighting image is always as bright as or brighter than the input image, and the second is that the per-pixel product of the lighting and albedo images is equal to the input image.
@@ -56,10 +56,10 @@ The total penalty integral over image space $$I$$, then, is $$\int \int_{I} (\|\
 For performance, the initial steps of the algorithm are run on smaller copies of the original image. Each copy is made from the copy of the next largest size by taking weighted averages of points at certain coordinates, approximating Gaussian weights as these averages are iterated. In the algorithm as implemented, 40 percent of gradient descent iterations are run on an image 1/64 the size of the original input (1/8 scale along both axes), 30 percent on an image 1/16 the size, 20 percent on an image 1/4 the size, and only 10% of iterations on the original input. As, due to the smoothness requirement, the most important attributes of the lighting image are its large-scale properties, this process greatly speeds up convergence.
 
 ### Implementation specifics
-[maybe merge into above]
+]maybe merge into above]
 
 ### Data aggregation
-[Move fog<.8 here?]
+]Move fog<.8 here?]
 
 ### Proposal and midterm report
 Proposal: https://github.com/david-zikel/weather-detection/raw/gh-pages/766%20Project%20Proposal.pdf
