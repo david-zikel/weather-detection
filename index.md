@@ -82,7 +82,9 @@ Much of the raw data used in these computations - the edge intensity image, the 
 
 “STAR: A Structure and Texture Aware Retinex Model”, Xu, Hou, Ren, Liu, Zhu, Yu, Wang, and Shao, 2020. [https://arxiv.org/pdf/1906.06690.pdf](https://arxiv.org/pdf/1906.06690.pdf)
 
-### Proposal and midterm report
+### Class submissions
 Proposal: [Link](https://github.com/david-zikel/weather-detection/raw/gh-pages/766%20Project%20Proposal.pdf)
 
 Midterm report: [Link](https://github.com/david-zikel/weather-detection/raw/gh-pages/766%20Project%20Midterm%20Report.pdf)
+
+Presentation: [Link](https://docs.google.com/presentation/d/106nQ7h6TZIMZS_R8_MTgKa9isPZyUAfpBSWRHlIeXNA/)
