@@ -1,4 +1,4 @@
-## Weather Detection
+## Environment Information Detection
 ### David Zikel
 
 ### Problem and motivation
